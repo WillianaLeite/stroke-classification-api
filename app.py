@@ -23,12 +23,11 @@ class StrokeClassifier(Resource):
         if type_extractor == 'percent':
             cols = [f'proba_class_{i}' for i in range(12)]
         elif type_extractor == 'pixel':
-            cols = [f'pixel_{i}' for i in range(23716)]
+            cols = [f'pixel_{i}' for i in range(11858)]
         
         if len(X.shape) == 1: X = [X]
 
         df_test = pd.DataFrame(X, columns=cols)
-        print('df_test: ', df_test)
         return self.model.predict(df_test)
 
     def post(self):
@@ -43,4 +42,4 @@ api.add_resource(StrokeClassifier, '/stroke')
 
 if __name__ == '__main__':
 
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
