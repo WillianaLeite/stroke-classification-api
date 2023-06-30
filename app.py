@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import pickle
 import json
+from train import extratree_classifier
 
 app = Flask(__name__)
 api = Api(app)
@@ -17,8 +18,11 @@ class StrokeClassifier(Resource):
 
     def predict(self, X: np.array, type_extractor: str):
         
-        with open(f'model/extratree_{type_extractor}.pkl', 'rb') as f:
-            self.model = pickle.load(f)
+        try:
+            with open(f'model/extratree_{type_extractor}.pkl', 'rb') as f:
+                self.model = pickle.load(f)
+        except:
+            self.model = extratree_classifier.fit(type_extractor)
 
         if type_extractor == 'percent':
             cols = [f'proba_class_{i}' for i in range(12)]
