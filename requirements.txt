@@ -1,0 +1,7 @@
+flask
+flask-restful
+pandas
+numpy
+scikit-learn
+brain-radiodensity-feature-extractor
+gunicorn
