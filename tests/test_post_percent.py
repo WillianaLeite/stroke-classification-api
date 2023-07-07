@@ -12,5 +12,8 @@ del features[-1]
 
 # Send features to stroke classifier API
 payload = {'extractor_type': 'percent', 'data': json.dumps(features)}
-y_predict = requests.post('http://127.0.0.1:8000/stroke', json=payload, headers={'Content-Type': 'application/json', 'Accept':'application/json'}).json()
+endpoint_prod = 'http://54.204.130.82:8000/stroke'
+endpoint_dev = 'http://127.0.0.1:8000/stroke'
+
+y_predict = requests.post(endpoint_prod, json=payload, headers={'Content-Type': 'application/json', 'Accept':'application/json'}).json()
 print(y_predict)

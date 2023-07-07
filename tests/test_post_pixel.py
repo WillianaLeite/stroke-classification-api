@@ -10,5 +10,7 @@ features = extractor.extract_features(path='sample/image157_isquemico.dcm', verb
 
 # Send features to stroke classifier API
 payload = {'extractor_type': 'pixel', 'data': json.dumps(features)}
-y_predict = requests.post('http://127.0.0.1:8000/stroke', json=payload, headers={'Content-Type': 'application/json', 'Accept':'application/json'}).json()
+endpoint_prod = 'http://54.204.130.82:8000/stroke'
+endpoint_dev = 'http://127.0.0.1:8000/stroke'
+y_predict = requests.post(endpoint_prod, json=payload, headers={'Content-Type': 'application/json', 'Accept':'application/json'}).json()
 print(y_predict)
