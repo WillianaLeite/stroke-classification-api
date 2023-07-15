@@ -9,7 +9,7 @@ This API contains the service that makes prediction of the class of a set of MGA
 
 The output of this API is numerical and represents the 3 classes:
 - **0**: no stroke
-- **1**: hischemic stroke
+- **1**: ischemic stroke
 - **2**: hemorrhagic stroke
 
 ## API Endpoints
